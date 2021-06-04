@@ -164,7 +164,6 @@ h6 > a {
 }
 
 /* Prose */
-
 p {
   line-height: var(--lineHeight-relaxed);
   --baseline-multiplier: 0.179;
@@ -327,6 +326,13 @@ a:focus {
   margin-bottom: var(--spacing-8);
 }
 
+.blog-post ol {
+  list-style-type: upper-roman;
+  ol {
+    list-style-type: lower-roman;
+  }
+}
+
 /* Media queries */
 
 @media (max-width: 42rem) {
@@ -337,5 +343,12 @@ a:focus {
   ul,
   ol {
     list-style-position: inside;
+    padding-left: var(--spacing-1);
+  }
+}
+
+@media (min-width: 768px) {
+  .blog-post ol {
+    padding-left: var(--spacing-8);
   }
 }

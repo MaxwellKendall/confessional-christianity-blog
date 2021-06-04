@@ -9,21 +9,29 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 const Bio = ({
-  classNames = ''
+  classNames = '',
+  authorId
 }) => {
-  const { author } = useStaticQuery(graphql`
+  const { authors: { nodes: authors } } = useStaticQuery(graphql`
     query BioQuery {
       # if there was more than one user, this would need to be filtered
-      author: wpUser {
-        firstName
-        twitter: name
-        description
-        avatar {
-          url
+      authors: allWpUser {
+        nodes {
+          firstName
+          id
+          lastName
+          twitter: name
+          description
+          avatar {
+            url
+          }
         }
       }
     }
   `)
+
+  // author for this post
+  const author = authors.find((o) => o.id === authorId);
 
   const avatarUrl = author?.avatar?.url
 
@@ -36,17 +44,10 @@ const Bio = ({
           src={avatarUrl}
         />
       )}
-      {author?.firstName && (
+      {author?.firstName && author?.lastName && (
         <p>
-          Written by <strong>{author.firstName}</strong>
-          {` `}
+          Written by <strong>{`${author.firstName} ${author.lastName}`}</strong>.&nbsp;
           {author?.description || null}
-          {` `}
-          {author?.twitter && (
-            <a href={`https://twitter.com/${author?.twitter || ``}`}>
-              You should follow them on Twitter
-            </a>
-          )}
         </p>
       )}
     </div>

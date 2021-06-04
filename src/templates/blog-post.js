@@ -21,7 +21,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   return (
     <Layout>
       <SEO title={post.title} description={post.excerpt} />
-
       <article
         className="blog-post"
         itemScope
@@ -43,18 +42,10 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
           <section itemProp="articleBody">{parse(post.content)}</section>
         )}
         <hr />
-        <Bio classNames="my-10" />
+        <Bio classNames="my-10" authorId={post.author.node.id} />
       </article>
       <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+        <ul className="flex flex-wrap space-between list-none p-0">
           <li>
             {previous && (
               <Link to={getPostPathWithoutDate(previous.uri)} rel="prev">
@@ -92,7 +83,11 @@ export const pageQuery = graphql`
       content
       title
       date(formatString: "MMMM DD, YYYY")
-
+      author {
+        node {
+          id
+        }
+      }
       featuredImage {
         node {
           altText
