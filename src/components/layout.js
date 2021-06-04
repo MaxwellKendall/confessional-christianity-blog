@@ -20,9 +20,9 @@ const Layout = ({ isHomePage, children }) => {
 
   return (
     <div className="global-wrapper" data-is-root-path={isHomePage}>
-      <header className="global-header">
+      <header className="global-header text-center">
         {isHomePage ? (
-          <h1 className="main-heading">
+          <h1 className="main-heading font-normal">
             <Link to="/">{parse(title)}</Link>
           </h1>
         ) : (
@@ -31,15 +31,11 @@ const Layout = ({ isHomePage, children }) => {
           </Link>
         )}
       </header>
-
-      <main>{children}</main>
-
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-        {` `}
-        And <a href="https://wordpress.org/">WordPress</a>
+      <main className="main">
+        {children}
+      </main>
+      <footer className="w-full flex justify-center items-center">
+        © CONFESSIONAL CHRISTIANITY {new Date().getFullYear()}
       </footer>
     </div>
   )

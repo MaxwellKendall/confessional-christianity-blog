@@ -5,6 +5,7 @@ import parse from "html-react-parser"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { getPostPathWithoutDate } from "../helpers"
 
 const BlogIndex = ({
   data,
@@ -17,10 +18,6 @@ const BlogIndex = ({
       <Layout isHomePage>
         <SEO title="All posts" />
         <Bio />
-        <p>
-          No blog posts found. Add posts to your WordPress site and they'll
-          appear here!
-        </p>
       </Layout>
     )
   }
@@ -28,13 +25,9 @@ const BlogIndex = ({
   return (
     <Layout isHomePage>
       <SEO title="All posts" />
-
-      <Bio />
-
-      <ol style={{ listStyle: `none` }}>
+      <ol className="list-none">
         {posts.map(post => {
           const title = post.title
-
           return (
             <li key={post.uri}>
               <article
@@ -44,7 +37,7 @@ const BlogIndex = ({
               >
                 <header>
                   <h2>
-                    <Link to={post.uri} itemProp="url">
+                    <Link to={getPostPathWithoutDate(post.uri)} itemProp="url">
                       <span itemProp="headline">{parse(title)}</span>
                     </Link>
                   </h2>
@@ -56,7 +49,6 @@ const BlogIndex = ({
           )
         })}
       </ol>
-
       {previousPagePath && (
         <>
           <Link to={previousPagePath}>Previous page</Link>

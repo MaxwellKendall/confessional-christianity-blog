@@ -1,4 +1,11 @@
 /* CSS Custom Properties Definitions */
+@import "~tailwindcss/base.css";
+@import "~tailwindcss/components.css";
+@import "~tailwindcss/utilities.css";
+
+@import "~@fontsource/cinzel-decorative/index.css"; // Weight 400.
+@import "~@fontsource/cinzel/index.css"; // Weight 400.
+@import "~@fontsource/marcellus/index.css";
 
 :root {
   --maxWidth-none: "none";
@@ -27,11 +34,8 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
-    Times, serif;
+  --fontFamily-sans: 'Cinzel';
+  --fontFamily-serif: 'Marcellus', serif;
   --font-body: var(--fontFamily-serif);
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
@@ -75,6 +79,9 @@ html {
   font-size: var(--fontSize-root);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  body h1 {
+    font-family: 'Cinzel Decorative', cursive;
+  }
 }
 
 body {
@@ -95,7 +102,6 @@ hr {
 
 /* Heading */
 
-h1,
 h2,
 h3,
 h4,

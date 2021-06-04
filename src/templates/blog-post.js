@@ -10,6 +10,7 @@ import "@wordpress/block-library/build-style/theme.css"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { getPostPathWithoutDate } from "../helpers"
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   const featuredImage = {
@@ -28,9 +29,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
       >
         <header>
           <h1 itemProp="headline">{parse(post.title)}</h1>
-
           <p>{post.date}</p>
-
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
             <Image
@@ -40,18 +39,12 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             />
           )}
         </header>
-
         {!!post.content && (
           <section itemProp="articleBody">{parse(post.content)}</section>
         )}
-
         <hr />
-
-        <footer>
-          <Bio />
-        </footer>
+        <Bio classNames="my-10" />
       </article>
-
       <nav className="blog-post-nav">
         <ul
           style={{
@@ -64,7 +57,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.uri} rel="prev">
+              <Link to={getPostPathWithoutDate(previous.uri)} rel="prev">
                 ← {parse(previous.title)}
               </Link>
             )}
@@ -72,7 +65,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
           <li>
             {next && (
-              <Link to={next.uri} rel="next">
+              <Link to={getPostPathWithoutDate(next.uri)} rel="next">
                 {parse(next.title)} →
               </Link>
             )}

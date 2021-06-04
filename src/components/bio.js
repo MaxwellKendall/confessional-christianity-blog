@@ -8,7 +8,9 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-const Bio = () => {
+const Bio = ({
+  classNames = ''
+}) => {
   const { author } = useStaticQuery(graphql`
     query BioQuery {
       # if there was more than one user, this would need to be filtered
@@ -26,7 +28,7 @@ const Bio = () => {
   const avatarUrl = author?.avatar?.url
 
   return (
-    <div className="bio">
+    <div className={`bio ${classNames}`}>
       {avatarUrl && (
         <img
           alt={author?.firstName || ``}
