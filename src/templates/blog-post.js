@@ -27,7 +27,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{parse(post.title)}</h1>
+          <h1 itemProp="headline" className="text-center w-full font-normal">{parse(post.title)}</h1>
           <p>{post.date}</p>
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
@@ -45,10 +45,10 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         <Bio classNames="my-10" authorId={post.author.node.id} />
       </article>
       <nav className="blog-post-nav">
-        <ul className="flex flex-wrap space-between list-none p-0">
+        <ul className="flex flex-wrap justify-between list-none p-0">
           <li>
             {previous && (
-              <Link to={getPostPathWithoutDate(previous.uri)} rel="prev">
+              <Link to={previous.uri} rel="prev">
                 ← {parse(previous.title)}
               </Link>
             )}
@@ -56,7 +56,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
           <li>
             {next && (
-              <Link to={getPostPathWithoutDate(next.uri)} rel="next">
+              <Link to={next.uri} rel="next">
                 {parse(next.title)} →
               </Link>
             )}

@@ -16,7 +16,7 @@ const BlogIndex = ({
   if (!posts.length) {
     return (
       <Layout isHomePage>
-        <SEO title="All posts" />
+        <SEO title="Confessional Christianity Blog" />
         <Bio />
       </Layout>
     )
@@ -37,7 +37,7 @@ const BlogIndex = ({
               >
                 <header>
                   <h2>
-                    <Link to={getPostPathWithoutDate(post.uri)} itemProp="url">
+                    <Link to={post.uri} itemProp="url">
                       <span itemProp="headline">{parse(title)}</span>
                     </Link>
                   </h2>

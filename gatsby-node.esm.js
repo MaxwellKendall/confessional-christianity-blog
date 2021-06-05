@@ -39,7 +39,7 @@ const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
       gatsbyUtilities.actions.createPage({
         // Use the WordPress uri as the Gatsby page path
         // This is a good idea so that internal links and menus work 👍
-        path: getPostPath(post.uri),
+        path: post.uri,
         // use the blog post template as the page component
         component: path.resolve(`./src/templates/blog-post.js`),
         // `context` is available in the template as a prop and
@@ -162,3 +162,18 @@ async function getPosts({ graphql, reporter }) {
 
   return graphqlResult.data.allWpPost.edges
 }
+
+// export const onCreateNode = ({ node, actions }) => {
+//   const { createNode } = actions;
+
+//   if (node.nodeType === 'Post') {
+//     createNode({
+//       ...node,
+//       internal: {
+//           type: node.nodeType,
+//           contentDigest: JSON.stringify(node.content)
+//       },
+//       uri: getPostPath(node.uri),
+//     });
+//   }
+// }
