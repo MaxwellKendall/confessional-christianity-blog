@@ -39,7 +39,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
           )}
         </header>
         {!!post.content && (
-          <section itemProp="articleBody">{parse(post.content)}</section>
+          <section itemProp="articleBody" className="flex flex-col justify-center items-center">{parse(post.content)}</section>
         )}
         <hr className="my-10"/>
         <Bio classNames="my-10" authorId={post.author.node.id} />
