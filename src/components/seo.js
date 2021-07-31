@@ -10,7 +10,9 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title }) => {
+const baseUrl = "https://blog.confessionalchristianity.com";
+
+const SEO = ({ description, lang, meta, title, img = null }) => {
   const { wp, wpUser } = useStaticQuery(
     graphql`
       query {
@@ -72,7 +74,19 @@ const SEO = ({ description, lang, meta, title }) => {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+        {
+          name: "twitter:domain",
+          value: baseUrl
+        }
+      ]
+      .concat(meta)
+      .concat(img
+        ? [
+          { property: "og:image", content: `${baseUrl}${img}` },
+          { property: "twitter:image", content: `${baseUrl}${img}` }
+        ]
+        : []
+      )}
     />
   )
 }

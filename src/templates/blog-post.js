@@ -20,7 +20,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
   return (
     <Layout>
-      <SEO title={post.title} description={post.excerpt} />
+      <SEO title={post.title} description={post.excerpt} img={post?.featuredImage?.node?.localFile?.publicURL} />
       <article
         className="blog-post"
         itemScope
@@ -30,13 +30,13 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
           <h1 itemProp="headline" className="text-center w-full font-normal">{parse(post.title)}</h1>
           <p>{post.date}</p>
           {/* if we have a featured image for this post let's display it */}
-          {featuredImage?.fluid && (
+          {/* {featuredImage?.fluid && (
             <Image
               fluid={featuredImage.fluid}
               alt={featuredImage.alt}
               style={{ marginBottom: 50 }}
             />
-          )}
+          )} */}
         </header>
         {!!post.content && (
           <section itemProp="articleBody" className="flex flex-col justify-center items-center">{parse(post.content)}</section>
@@ -92,6 +92,7 @@ export const pageQuery = graphql`
         node {
           altText
           localFile {
+            publicURL
             childImageSharp {
               fluid(maxWidth: 1000, quality: 100) {
                 ...GatsbyImageSharpFluid_tracedSVG
