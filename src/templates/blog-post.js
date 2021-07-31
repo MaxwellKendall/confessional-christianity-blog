@@ -26,9 +26,9 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        <header>
+        <header className="md:my-10 lg:my-24">
           <h1 itemProp="headline" className="text-center w-full font-normal">{parse(post.title)}</h1>
-          <p>{post.date}</p>
+          <p className="w-full text-center">{post.date}</p>
           {/* if we have a featured image for this post let's display it */}
           {/* {featuredImage?.fluid && (
             <Image
@@ -39,7 +39,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
           )} */}
         </header>
         {!!post.content && (
-          <section itemProp="articleBody" className="flex flex-col justify-center items-center">{parse(post.content)}</section>
+          <section itemProp="articleBody" className="blog-post-content flex flex-col justify-center items-center">{parse(post.content)}</section>
         )}
         <hr className="my-10"/>
         <Bio classNames="my-10" authorId={post.author.node.id} />

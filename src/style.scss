@@ -65,6 +65,7 @@
   --color-heading-black: black;
   --color-accent: #d1dce5;
   --tablet: 768px;
+  --desktop: 1024px;
 }
 
 /* HTML elements */
@@ -349,6 +350,16 @@ hr {
       list-style-type: lower-roman;
     }
   }
+
+  .blog-post-content >*:first-child p:first-of-type:first-letter,
+  .blog-post-content >*:first-child::first-letter {
+    float: left;
+    font-size: 48px;
+    line-height: 50px;
+    padding-top: 3px;
+    padding-right: 14px;
+    padding-left: 0px;
+  }
   
   /* Media queries */
   
@@ -367,9 +378,20 @@ hr {
     }
   }
   
-  @media (min-width: var(tablet)) {
+  @media (min-width: var(--tablet)) {
     .blog-post ol {
       padding-left: var(--spacing-8);
+    }
+  }
+  @media (min-width: var(--desktop)) {
+    .blog-post-content >*:first-child p:first-of-type:first-letter,
+    .blog-post-content >*:first-child::first-letter {
+      float: left;
+      font-size: 75px;
+      line-height: 60px;
+      padding-top: 3px;
+      padding-right: 28px;
+      padding-left: 0px;
     }
   }
 }
