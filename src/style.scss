@@ -360,6 +360,14 @@ hr {
     padding-right: 14px;
     padding-left: 0px;
   }
+
+  .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+    max-width: 100px;
+    margin: 1rem 0;
+    color: black;
+    height: 2px;
+    width: 100%;
+  }
   
   /* Media queries */
   
