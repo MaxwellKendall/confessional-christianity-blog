@@ -29,7 +29,7 @@ const BlogIndex = ({
         {posts.map(post => {
           const title = post.title
           return (
-            <li key={post.uri}>
+            <li key={post.uri} className="my-12 md:my-24">
               <article
                 className="post-list-item"
                 itemScope
