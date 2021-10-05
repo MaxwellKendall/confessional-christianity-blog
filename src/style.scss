@@ -345,6 +345,7 @@ hr {
   
   .blog-post ol {
     list-style-type: upper-roman;
+    padding-left: var(--spacing-4);
     ol {
       list-style-type: lower-roman;
     }
