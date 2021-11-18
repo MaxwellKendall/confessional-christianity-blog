@@ -203,6 +203,8 @@ hr {
     margin-left: var(--spacing-8);
     margin-top: calc(var(--spacing-8) / 2);
   }
+
+  // Quotes
   
   blockquote {
     color: var(--color-text-light);
@@ -210,7 +212,9 @@ hr {
     margin-right: var(--spacing-8);
     padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4);
     font-style: italic;
+    width: 100%;
     margin-bottom: var(--spacing-4);
+    margin-left: var(--spacing-10);
     border-left: var(--spacing-1) solid rgba(46, 53, 63, 0.3);
     @media(min-width: var(--tablet)) {
       margin-left: var(--spacing-6);      
@@ -228,6 +232,18 @@ hr {
   blockquote > ul,
   blockquote > ol {
     list-style-position: inside;
+  }
+
+  figure.wp-block-pullquote {
+    border: none;
+    blockquote {
+      border: none;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
   }
   
   table {
@@ -394,13 +410,14 @@ hr {
       list-style-position: inside;
       padding-left: var(--spacing-1);
     }
-  }
-  
-  @media (min-width: var(--tablet)) {
     .blog-post ol {
       padding-left: var(--spacing-8);
     }
+    figure.wp-block-pullquote blockquote {
+      width: 75%;
+    }
   }
+  
   @media (min-width: var(--desktop)) {
     .blog-post-content >*:first-child p:first-of-type:first-letter,
     .blog-post-content >*:first-child::first-letter {
