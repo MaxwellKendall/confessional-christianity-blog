@@ -369,8 +369,8 @@ hr {
     }
   }
 
-  .blog-post-content >*:first-child p:first-of-type:first-letter,
-  .blog-post-content >*:first-child::first-letter {
+  .blog-post-content >*:first-child:not(blockquote) p:first-of-type:first-letter,
+  .blog-post-content >*:first-child:not(blockquote)::first-letter {
     float: left;
     font-size: 48px;
     line-height: 50px;
@@ -423,8 +423,8 @@ hr {
   }
   
   @media (min-width: var(--desktop)) {
-    .blog-post-content >*:first-child p:first-of-type:first-letter,
-    .blog-post-content >*:first-child::first-letter {
+    .blog-post-content >*:first-child:not(blockquote) p:first-of-type:first-letter,
+    .blog-post-content >*:first-child::first-letter:not(blockquote) {
       float: left;
       font-size: 75px;
       line-height: 60px;
