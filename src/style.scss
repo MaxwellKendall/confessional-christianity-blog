@@ -371,12 +371,12 @@ hr {
 
   .blog-post-content >*:first-child:not(blockquote) p:first-of-type:first-letter,
   .blog-post-content >*:first-child:not(blockquote)::first-letter {
+    padding-right: 10px;
+    font-size: 60px;
+    line-height: 55px;
     float: left;
-    font-size: 48px;
-    line-height: 50px;
-    padding-top: 3px;
-    padding-right: 14px;
-    padding-left: 0px;
+    font-weight: 600;
+    // color: rgb(182, 141, 106);
   }
 
   .blog-post-content >* {
