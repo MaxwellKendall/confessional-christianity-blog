@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link, graphql, navigate } from "gatsby"
 import parse from "html-react-parser"
 
 import Bio from "../components/bio"
@@ -7,11 +7,41 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { getPostPathWithoutDate } from "../helpers"
 
+const handleFilter = (searchTerm) => {
+  if (!searchTerm) return () => true;
+  return (post) => {
+    if (post.title.includes(searchTerm)) return true;
+    const parsedExcerpt = parse(post.excerpt);
+    if (parsedExcerpt.includes(searchTerm)) return true;
+    return false;
+  }
+}
+
+const URL_REGEX = /\s/g;
+const POST_REGEX = /,|'/g
+
 const BlogIndex = ({
   data,
+  location,
   pageContext: { nextPagePath, previousPagePath },
 }) => {
+  const queryParams = new URLSearchParams(location.search)
+  const search = queryParams.get('search') || '';
   const posts = data.allWpPost.nodes
+  
+  const handleChange = (e) => {
+    e.persist();
+    console.log(e.target.value);
+    new URLSearchParams(e.target.value)
+    navigate(`/?search=${e.target.value.replaceAll(URL_REGEX, '%20')}`);
+  }
+  
+  const handleKeyDown = (e) => {
+      e.persist();
+    if (e.keyCode === 13) {
+      navigate(`/?search=${search}`);
+    }
+  }
 
   if (!posts.length) {
     return (
@@ -25,8 +55,21 @@ const BlogIndex = ({
   return (
     <Layout isHomePage>
       <SEO title="All posts" />
+      <div className="w-full flex justify-center">
+        <input className="p-2 rounded-md border-2 mx-auto" placeholder="Search posts" type="text" value={search} onKeyDown={handleKeyDown} onChange={handleChange} />
+      </div>
       <ol className="list-none">
-        {posts.map(post => {
+        {posts.filter(
+          (post) => {
+            if (!search) return true;
+            const cleanedTitle = post.title.toLowerCase().replaceAll(POST_REGEX, '');
+            const cleanedExcerpt = post.excerpt.toLowerCase().replace(POST_REGEX, '');
+            
+            if (post.title.toLowerCase().includes(search.toLowerCase()) || cleanedTitle.includes(search.toLowerCase())) return true;
+            if (post.excerpt.toLowerCase().includes(search.toLowerCase()) || cleanedExcerpt.includes(search.toLowerCase())) return true;
+            return false;
+          })
+          .map(post => {
           const title = post.title
           return (
             <li key={post.uri} className="my-12 md:my-24">
