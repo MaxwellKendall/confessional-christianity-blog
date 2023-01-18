@@ -61,6 +61,7 @@ const BlogIndex = ({
       if (post.tags.nodes.some(({ name }) => name.toLowerCase().includes(search.toLowerCase()))) return true;
       if (post.title.toLowerCase().includes(search.toLowerCase()) || cleanedTitle.includes(search.toLowerCase())) return true;
       if (post.excerpt.toLowerCase().includes(search.toLowerCase()) || cleanedExcerpt.includes(search.toLowerCase())) return true;
+      if (post.content.toLowerCase().includes(search.toLowerCase())) return true;
       return false;
     })
 
@@ -130,6 +131,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         excerpt
+        content
         tags {
 					nodes {
 						name
