@@ -71,6 +71,7 @@ const BlogIndex = ({
       <div className="w-full flex justify-center">
         <input className="p-2 rounded-md border-2 mx-auto" placeholder="Search posts" type="text" value={search} onChange={handleChange} />
       </div>
+      {!filteredPosts.length && <p className="w-full text-center my-48">0️⃣ results! Try a different search! 🙏</p>}
       <ol className="list-none">
         {filteredPosts
             .slice(0, postLimit)
