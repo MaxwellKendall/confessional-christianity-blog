@@ -1,7 +1,7 @@
 /* CSS Custom Properties Definitions */
-@import "~tailwindcss/base.css";
-@import "~tailwindcss/components.css";
-@import "~tailwindcss/utilities.css";
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
 
 :root {
   --maxWidth-none: "none";
@@ -219,6 +219,11 @@ hr {
       margin-left: var(--spacing-6);      
       padding-left: var(--spacing-6);
     }
+
+    p {
+      margin: var(--spacing-4);
+    }
+
     p:last-of-type {
       margin-bottom: var(--spacing-2);
     }
