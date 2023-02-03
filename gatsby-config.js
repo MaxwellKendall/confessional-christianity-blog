@@ -19,7 +19,7 @@ module.exports = {
   siteMetadata: {
     title: `Confessional Christianity Blog`,
     description: `An outlet for ministers in confessional denominations who hold fast their vows.`,
-    author: `Max Kendall`,
+    author: `Maxwell Kendall`,
     address: '46 Wando Park BLVD',
   },
   /**
