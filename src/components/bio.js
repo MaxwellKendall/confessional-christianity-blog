@@ -46,7 +46,7 @@ const Bio = ({
       )}
       {author?.firstName && author?.lastName && (
         <p>
-          Written by <strong>{`${author.firstName} ${author.lastName}`}</strong>.&nbsp;
+          Post from <strong>{`${author.firstName} ${author.lastName}`}</strong>.&nbsp;
           {author?.description || null}
         </p>
       )}
